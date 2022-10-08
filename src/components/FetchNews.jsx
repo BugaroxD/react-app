@@ -1,4 +1,4 @@
-import { CircularProgress } from "@mui/material";
+import { Card, CircularProgress } from "@mui/material";
 import React, { useEffect, useState } from "react";
 /*
  {
@@ -27,16 +27,26 @@ const FetchNews = () => {
   }, []);
 
   return (
-    <div>
+    <div style={{ maxWidth: "70rem", margin: "0 auto" }}>
       <h1>Notícias</h1>
       {isLoading ? (
         <CircularProgress />
       ) : (
         news.map((noticia) => (
-          <div key={noticia.id}>
-            <div>{noticia.title}</div>
-            <div>{noticia.body}</div>
-          </div>
+          <Card
+            variant="outlined"
+            style={{
+              marginBottom: "1rem",
+              textAlign: "left",
+              padding: "1rem",
+              borderRadius: "2rem",
+            }}
+          >
+            <div key={noticia.id}>
+              <h2>{noticia.title}</h2>
+              <div>{noticia.body}</div>
+            </div>
+          </Card>
         ))
       )}
     </div>
