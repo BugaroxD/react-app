@@ -43,30 +43,38 @@ const FetchProducts = () => {
         <div>Carregando</div>
       ) : (
         data.map((produto) => (
-          <Card
-            sx={{ maxWidth: 345 }}
-            key={produto.id}
-            style={{ marginBottom: "2rem" }}
-          >
-            <CardMedia
-              component="img"
-              height="140"
-              image={produto.thumbnail}
-              alt={produto.brand}
-            />
-            <CardContent>
-              <Typography gutterBottom variant="h5" component="div">
-                {produto.title}
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                {produto.description}
-              </Typography>
-            </CardContent>
-            <CardActions>
-              <Button size="small">Compartilhar</Button>
-              <Button size="small">Conheça mais</Button>
-            </CardActions>
-          </Card>
+          <Grid2 container spacing={2}>
+            <Card
+              sx={{ maxWidth: 345 }}
+              key={produto.id}
+              style={{ marginBottom: "2rem" }}
+            >
+              <Grid2 item xs={12} sm={6}>
+                <CardMedia
+                  component="img"
+                  height="140"
+                  image={produto.thumbnail}
+                  alt={produto.brand}
+                />
+              </Grid2>
+              <Grid2 item xs={12} sm={6}>
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="div">
+                    {produto.title}
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    {produto.description}
+                  </Typography>
+                </CardContent>
+              </Grid2>
+              <Grid2 item xs={12} sm={6}>
+                <CardActions>
+                  <Button size="small">Compartilhar</Button>
+                  <Button size="small">Conheça mais</Button>
+                </CardActions>
+              </Grid2>
+            </Card>
+          </Grid2>
         ))
       )}
     </div>
