@@ -1,5 +1,6 @@
 import {
   AppBar,
+  Drawer,
   IconButton,
   List,
   ListItem,
@@ -12,9 +13,10 @@ import {
 import { Box } from "@mui/system";
 import { Outlet } from "react-router-dom";
 import { Menu } from "@mui/icons-material";
+import { useState } from "react";
 
 export const PageLayout = () => {
-  const Drawer = () => {
+  const DrawerApp = () => {
     return (
       <Box>
         <Typography variant="h5">Menu</Typography>
@@ -59,22 +61,32 @@ export const PageLayout = () => {
   };
 
   const ContainerMenu = () => {
+    const [open, setOpen] = useState(false);
+    const dealWithMenu = () => {
+      setOpen(!open);
+    };
+
     return (
       <Box>
         <AppBar>
           <Toolbar>
-            <IconButton>
+            <IconButton onClick={dealWithMenu}>
               <Menu></Menu>
             </IconButton>
           </Toolbar>
         </AppBar>
+        <Box>
+          <Drawer open={open}>
+            <DrawerApp />
+          </Drawer>
+        </Box>
       </Box>
     );
   };
 
   return (
     <>
-      <Drawer />
+      <DrawerApp />
       <ContainerMenu />
       <Outlet />
     </>
