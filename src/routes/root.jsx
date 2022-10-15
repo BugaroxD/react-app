@@ -1,5 +1,31 @@
-import { Outlet } from "react-router-dom";
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  Route,
+  RouterProvider,
+} from "react-router-dom";
+import Contador from "../components/Contador";
+import FetchNews from "../components/FetchNews";
+import ErrorPage from "../components/ErrorPage";
+import FetchProducts from "../components/FetchProducts";
+import { PageLayout } from "../components/PageLayout";
 
+const Root = () => {
+  const route = createBrowserRouter(
+    createRoutesFromElements(
+      <Route path="/" element={<PageLayout />} errorElement={<ErrorPage />}>
+        <Route index path="contador" element={<Contador />} />
+        <Route path="noticias" element={<FetchNews />} />
+        <Route path="produtos" element={<FetchProducts />} />
+      </Route>
+    )
+  );
+  return <RouterProvider router={route} />;
+};
+
+export default Root;
+
+/*
 const Root = () => {
   return (
     <>
@@ -20,7 +46,7 @@ const Root = () => {
               <a href={"noticias/"}>Noticias</a>
             </li>
             <li>
-              <a href={"contato/"}>Contato</a>
+              <a href={"contador/"}>Contador</a>
             </li>
           </ul>
         </nav>
@@ -33,3 +59,4 @@ const Root = () => {
 };
 
 export default Root;
+*/
