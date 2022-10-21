@@ -9,14 +9,16 @@ import FetchNews from "../components/FetchNews";
 import ErrorPage from "../components/ErrorPage";
 import FetchProducts from "../components/FetchProducts";
 import { PageLayout } from "../components/PageLayout";
+import Login from "../components/Login";
 
 const Root = () => {
   const route = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<PageLayout />} errorElement={<ErrorPage />}>
-        <Route index path="contador" element={<Contador />} />
+        <Route index path="contador " element={<Contador />} />
         <Route path="noticias" element={<FetchNews />} />
         <Route path="produtos" element={<FetchProducts />} />
+        <Route path="login" element={<Login />} />
       </Route>
     )
   );
